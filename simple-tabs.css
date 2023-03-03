@@ -1,0 +1,25 @@
+.tabs .tab {
+  display: inline-block;
+  position: relative;
+  bottom: -1px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.tabs .tab.active {
+  border: 1px solid gray;
+  border-bottom: 1px solid white;
+  border-radius: 5px 5px 0 0;
+}
+
+.tabs .tab-content {
+  display: none;
+  border: 1px solid gray;
+  border-radius: 0 0 5px 5px;
+  padding: 10px;
+  width: 200px;
+}
+
+.tabs .tab-content.active {
+  display: block;
+}
