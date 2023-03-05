@@ -1,4 +1,4 @@
-.tabs .tab {
+.simple-tabs .tab-button {
   display: inline-block;
   position: relative;
   bottom: -1px;
@@ -6,13 +6,13 @@
   cursor: pointer;
 }
 
-.tabs .tab.active {
+.simple-tabs .tab-button.active {
   border: 1px solid gray;
   border-bottom: 1px solid white;
   border-radius: 5px 5px 0 0;
 }
 
-.tabs .tab-content {
+.simple-tabs .tab-content {
   display: none;
   border: 1px solid gray;
   border-radius: 0 0 5px 5px;
@@ -20,6 +20,6 @@
   width: 200px;
 }
 
-.tabs .tab-content.active {
+.simple-tabs .tab-content.active {
   display: block;
 }

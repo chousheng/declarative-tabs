@@ -1,79 +1,81 @@
 const initSimpleTabs = () => {
-  // Iterate tabs array
-  let tabsCollection = document.getElementsByClassName("tabs");
-  [...tabsCollection].forEach((tabs) => {
-    // Build tab array
-    let tabCollection = tabs.getElementsByClassName("tab");
-    let tabArray = [...tabCollection];
+  // Iterate simpleTabs array
+  let tabsElementCollection = document.getElementsByClassName("simple-tabs");
+  [...tabsElementCollection].forEach((tabsElement) => {
+    // Build tabButton array
+    let tabButtonElementCollection = tabsElement.getElementsByClassName("tab-button");
+    let tabButtonElementArray = [...tabButtonElementCollection];
 
     // Build tab content array
-    let tabContentCollection = tabs.getElementsByClassName("tab-content");
-    let tabContentArray = [...tabContentCollection];
+    let tabContentElementCollection = tabsElement.getElementsByClassName("tab-content");
+    let tabContentElementArray = [...tabContentElementCollection];
 
     // Attach event listener
-    tabs.onclick = (event) => {
+    tabsElement.onclick = (event) => {
       let target = event.target;
-      if (target.classList.contains("tab")) {
-        for (let i = 0; i < tabArray.length; i++) {
-          if (tabArray[i] == target) {
-            tabArray[i].classList.add("active");
-            tabContentArray[i].classList.add("active");
+      if (target.classList.contains("tab-button")) {
+        for (let i = 0; i < tabButtonElementArray.length; i++) {
+          if (tabButtonElementArray[i] == target) {
+            tabButtonElementArray[i].classList.add("active");
+            tabContentElementArray[i].classList.add("active");
           } else {
-            tabArray[i].classList.remove("active");
-            tabContentArray[i].classList.remove("active");
+            tabButtonElementArray[i].classList.remove("active");
+            tabContentElementArray[i].classList.remove("active");
           }
         }
       }
     };
-    
+
     // Make the first tab active
-    tabArray[0].classList.add("active");
-    tabContentArray[0].classList.add("active");
+    tabButtonElementArray[0].classList.add("active");
+    tabContentElementArray[0].classList.add("active");
   });
 };
 
 const initSimpleTabsDeclarative = () => {
   // Build tab groups
-  let nodeList = document.querySelectorAll("[class$=-tab]")
+  let nodeList = document.querySelectorAll("[data-tab]");
   let groups = [];
   if (nodeList.length > 0) {
-      let group = [nodeList[0]];
-      let firstNode = nodeList[0];
-      for (let i = 1; i < nodeList.length; i++) {
-          if (firstNode.parentNode == nodeList[i].parentNode) {
-              group.push(nodeList[i]);
-          } else {
-              groups.push(group);
-              group = [nodeList[i]];
-              firstNode = nodeList[i];
-          }
+    let group = [nodeList[0]];
+    let firstNode = nodeList[0];
+    for (let i = 1; i < nodeList.length; i++) {
+      if (firstNode.parentNode == nodeList[i].parentNode) {
+        group.push(nodeList[i]);
+      } else {
+        groups.push(group);
+        group = [nodeList[i]];
+        firstNode = nodeList[i];
       }
-      groups.push(group);
+    }
+    groups.push(group);
   }
 
-  // Add tab elements to tabs elements and CSS properties
+  // Process each group
   groups.forEach((group) => {
+    // Add simple-tabs class to the parent element of each group
     let tabsElement = group[0].parentNode;
-    tabsElement.classList.add("tabs");
+    tabsElement.classList.add("simple-tabs");
 
-    let tabArray = [];
+    let tabButtonElementArray = [];
     group.forEach((tabContent) => {
+      // Add tab-content class to each tabContent
       tabContent.classList.add("tab-content");
 
-      let tab = document.createElement('div');
-      tabContent.classList.forEach((className) => {
-        let name = className.match(/(.*)-tab$/);
-        if (name) {
-          tab.textContent = name[1];
-          tabContent.classList.remove(name[0]);
-        }
-      });
-      tab.className = 'tab';
+      // Create a new tabButton element for each tabContent
+      let tabButtonElement = document.createElement('div');
+      tabButtonElement.className = 'tab-button';
+      tabButtonElement.textContent = tabContent.getAttribute('data-tab');
 
-      tabArray.push(tab);
+      // Remove data-tab attribute
+      tabContent.removeAttribute('data-tab');
+
+      // Add tabButton to the array
+      tabButtonElementArray.push(tabButtonElement);
     });
 
-    tabsElement.prepend(...tabArray);
+    // Append the newly created tabButton elements to the parent node
+    tabsElement.prepend(...tabButtonElementArray);
   });
 
   // Initialize the tabs
