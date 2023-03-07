@@ -1,6 +1,6 @@
 # simple-tabs
 
-A declarative JavaScript/CSS/HTML tabs implementation that minimizes boilerplate.
+A declarative HTML/CSS/JavaScript tabs implementation that minimizes boilerplate.
 
 ![Screenshot](images/screenshot.png)
 
