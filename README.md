@@ -4,9 +4,15 @@ A declarative HTML/CSS/JavaScript tabs implementation that minimizes boilerplate
 
 ![Screenshot](images/screenshot.png)
 
+## Why Declarative?
+
+It makes code simpler and less likely to have bugs! See [The Locality of Behavior Principle](https://htmx.org/essays/locality-of-behaviour/):
+
+> The behavior of a unit of code should be as obvious as possible by looking only at that unit of code.
+
 ## Usage
 
-There are two ways to make tabs: regular and declarative. The regular requires users to explicitly insert and style tab HTML elements. The declarative enables users to describe tabs with minimal boilerplate and then call a JavaScript function to insert and style tab HTML elements automatically.
+There are two ways to make tabs: regular and declarative. The regular requires users to explicitly insert and style tab HTML elements. The declarative enables users to describe tabs with minimal boilerplate and then call a JavaScript function to insert and style tab HTML elements automatically. The declarative is recommended.
 
 The regular and declarative examples below result in the identical DOM tree in the browser:
 
