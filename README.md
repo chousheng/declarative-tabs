@@ -1,6 +1,6 @@
 # simple-tabs
 
-A declarative HTML/CSS/JavaScript tabs implementation that minimizes boilerplate.
+A declarative HTML/CSS/JavaScript tabs library that minimizes boilerplate.
 
 ![Screenshot](images/screenshot.png)
 
@@ -12,9 +12,9 @@ It makes code simpler and less likely to have bugs! See [The Locality of Behavio
 
 ## Usage
 
-There are two ways to make tabs: regular and declarative. The regular requires users to explicitly insert and style tab HTML elements. The declarative enables users to describe tabs with minimal boilerplate and then call a JavaScript function to insert and style tab HTML elements automatically. The declarative is recommended.
+There are two ways to make tabs using this library: regular and declarative. The regular requires users to insert and style tab HTML elements explicitly. The declarative enables users to describe tabs with minimal boilerplate and then call a JavaScript function to insert and style tab HTML elements automatically.
 
-The regular and declarative examples below result in the identical DOM tree in the browser:
+The regular and declarative examples below result in the identical DOM tree in the browser, but the declarative is much more concise:
 
 ### Regular
 
