@@ -1,4 +1,4 @@
-# simple-tabs
+# declarative-tabs
 
 A declarative HTML/CSS/JavaScript tabs library that minimizes boilerplate.
 
