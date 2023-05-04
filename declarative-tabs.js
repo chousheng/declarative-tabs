@@ -1,6 +1,6 @@
-const initSimpleTabs = () => {
-  // Iterate simpleTabs array
-  let tabsElementCollection = document.getElementsByClassName("simple-tabs");
+const initRegularTabs = () => {
+  // Iterate tabs array
+  let tabsElementCollection = document.getElementsByClassName("declarative-tabs");
   [...tabsElementCollection].forEach((tabsElement) => {
     // Build tabButton array
     let tabButtonElementCollection = tabsElement.getElementsByClassName("tab-button");
@@ -32,7 +32,7 @@ const initSimpleTabs = () => {
   });
 };
 
-const initSimpleTabsDeclarative = () => {
+const initDeclarativeTabs = () => {
   // Build tab groups
   let nodeList = document.querySelectorAll("[data-tab]");
   let groups = [];
@@ -53,9 +53,9 @@ const initSimpleTabsDeclarative = () => {
 
   // Process each group
   groups.forEach((group) => {
-    // Add simple-tabs class to the parent element of each group
+    // Add declarative-tabs class to the parent element of each group
     let tabsElement = group[0].parentNode;
-    tabsElement.classList.add("simple-tabs");
+    tabsElement.classList.add("declarative-tabs");
 
     let tabButtonElementArray = [];
     group.forEach((tabContent) => {
@@ -79,5 +79,5 @@ const initSimpleTabsDeclarative = () => {
   });
 
   // Initialize the tabs
-  initSimpleTabs();
+  initRegularTabs();
 };
